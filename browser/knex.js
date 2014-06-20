@@ -466,6 +466,9 @@ var mysql;
 function Client_MySQL(config) {
   Client.apply(this, arguments);
   if (config.debug) this.isDebugging = true;
+  if (typeof config.debug === 'function') {
+    this._debugFunction = config.debug;
+  }
   if (config.connection) {
     this.initDriver();
     this.initRunner();
